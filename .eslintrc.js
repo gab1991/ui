@@ -72,25 +72,25 @@ module.exports = {
     'typescript-sort-keys/interface': 'warn',
     'typescript-sort-keys/string-enum': 'warn',
     // TYPESCRIPT
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: 'interface',
-        format: ['PascalCase'],
-        custom: {
-          regex: '^I[A-Z]',
-          match: true,
-        },
-      },
-      {
-        selector: 'typeAlias',
-        format: ['PascalCase'],
-        custom: {
-          regex: '^T[A-Z]',
-          match: true,
-        },
-      },
-    ],
+    // '@typescript-eslint/naming-convention': [
+    //   'error',
+    //   {
+    //     selector: 'interface',
+    //     format: ['PascalCase'],
+    //     custom: {
+    //       regex: '^I[A-Z]',
+    //       match: true,
+    //     },
+    //   },
+    //   {
+    //     selector: 'typeAlias',
+    //     format: ['PascalCase'],
+    //     custom: {
+    //       regex: '^T[A-Z]',
+    //       match: true,
+    //     },
+    //   },
+    // ],
     '@typescript-eslint/no-magic-numbers': [
       'error',
       {
