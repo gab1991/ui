@@ -1,0 +1,15 @@
+.controls {
+  margin: 20px;
+  display: flex;
+}
+.addButton {
+  display: flex;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.plusSvg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}

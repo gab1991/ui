@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, useState } from 'react';
 import cn from 'classnames';
 
 import { Project } from 'types';
@@ -10,13 +10,19 @@ import { generateRandomColor } from 'shared/utils';
 import styles from './ProjectCard.module.scss';
 
 interface ProjectCardProps extends HTMLAttributes<HTMLDivElement> {
+  onRemoveCardClick?: (id: string) => void;
   project: Project;
 }
 
 export function ProjectCard(props: ProjectCardProps) {
-  const { project, className, ...htmlProps } = props;
+  const { project, className, onRemoveCardClick, ...htmlProps } = props;
+  const [randomColor] = useState(generateRandomColor());
 
   const starsArray = Array.from({ length: project.rating });
+
+  const onRemoveButtonClick = () => {
+    onRemoveCardClick && onRemoveCardClick(project.id);
+  };
 
   return (
     <div className={cn(styles.projectCard, className)} {...htmlProps}>
@@ -25,7 +31,7 @@ export function ProjectCard(props: ProjectCardProps) {
         rel='noopener noreferrer'
         target='_blank'
         className={styles.cardBody}
-        style={{ background: generateRandomColor() }}
+        style={{ background: randomColor }}
       >
         <h4 className={styles.projectName}>{project.name}</h4>
         <ul className={styles.starList}>
@@ -36,7 +42,7 @@ export function ProjectCard(props: ProjectCardProps) {
           ))}
         </ul>
       </a>
-      <EmptyButton className={styles.removeButton}>
+      <EmptyButton className={styles.removeButton} onClick={onRemoveButtonClick}>
         <SvgIcons.Cross className={styles.crosSvg} />
       </EmptyButton>
     </div>

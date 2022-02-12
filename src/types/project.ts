@@ -5,3 +5,7 @@ export interface Project {
   rating: number;
   url: string;
 }
+
+export interface ProjectTemplate {
+  templateId: number;
+}
