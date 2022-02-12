@@ -10,7 +10,7 @@ export function GithubProjectBoard(props: TGithubProjectBoardProps) {
 
   return (
     <section className={cn(styles.githubProjectBoard, className)} {...htmlProps}>
-      GithubProjectBoard
+      <h1 className={styles.heading}>Github Projects</h1>
     </section>
   );
 }
