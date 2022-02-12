@@ -1,0 +1,14 @@
+$base-color: #41729f;
+
+.button {
+  min-width: 100px;
+  border: none;
+  color: white;
+  background-color: $base-color;
+  padding: 10px 40px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: darken($color: $base-color, $amount: 10);
+  }
+}
