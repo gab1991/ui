@@ -1,0 +1,56 @@
+.projectCard {
+  width: 300px;
+  height: 300px;
+  background-color: blanchedalmond;
+  border-radius: 20px;
+  position: relative;
+
+  &:hover {
+    .removeButton {
+      opacity: 1;
+    }
+  }
+}
+
+.cardBody {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+.projectName {
+  margin-top: 50px;
+  font-size: 1.5rem;
+}
+
+.starList {
+  display: flex;
+  gap: 10px;
+}
+
+.starSvg {
+  width: 30px;
+  height: 30px;
+  fill: brown;
+}
+
+.removeButton {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0;
+  transition: all 400ms ease;
+}
+
+.crosSvg {
+  fill: brown;
+}
