@@ -5,6 +5,7 @@ import { Project } from 'types';
 
 import { SvgIcons } from 'shared/icons';
 import { EmptyButton } from 'shared/ui';
+import { generateRandomColor } from 'shared/utils';
 
 import styles from './ProjectCard.module.scss';
 
@@ -19,7 +20,13 @@ export function ProjectCard(props: ProjectCardProps) {
 
   return (
     <div className={cn(styles.projectCard, className)} {...htmlProps}>
-      <a href={project.url} rel='noopener noreferrer' target='_blank' className={styles.cardBody}>
+      <a
+        href={project.url}
+        rel='noopener noreferrer'
+        target='_blank'
+        className={styles.cardBody}
+        style={{ background: generateRandomColor() }}
+      >
         <h4 className={styles.projectName}>{project.name}</h4>
         <ul className={styles.starList}>
           {starsArray.map((_, index) => (
