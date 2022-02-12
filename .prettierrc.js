@@ -5,6 +5,5 @@ module.exports = {
   printWidth: 120,
   useTabs: false,
   jsxSingleQuote: true,
-  jsxBracketSameLine: false,
   endOfLine: 'auto',
 };
