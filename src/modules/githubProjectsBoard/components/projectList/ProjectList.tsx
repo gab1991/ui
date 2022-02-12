@@ -1,15 +1,23 @@
 import { HTMLAttributes } from 'react';
 import cn from 'classnames';
 
-import styles from './ProjectList.module.scss';
-type TProjectListProps = HTMLAttributes<HTMLUListElement>;
+import { ProjectCard } from '../projectCard';
+import { projects } from 'data/defaultProjects';
 
-export function ProjectList(props: TProjectListProps) {
+import styles from './ProjectList.module.scss';
+
+type ProjectListProps = HTMLAttributes<HTMLUListElement>;
+
+export function ProjectList(props: ProjectListProps) {
   const { className, ...htmlProps } = props;
 
   return (
     <ul className={cn(styles.projectList, className)} {...htmlProps}>
-      ProjectList
+      {projects.map((project) => (
+        <li key={project.id}>
+          <ProjectCard project={project} />
+        </li>
+      ))}
     </ul>
   );
 }
