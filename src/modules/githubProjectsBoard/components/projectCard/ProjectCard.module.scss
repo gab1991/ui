@@ -5,8 +5,12 @@
   position: relative;
   overflow: hidden;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  transition: all 300ms ease-in-out;
 
   &:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 10px 11px 34px 0px rgba(34, 60, 80, 0.2);
+
     .removeButton {
       opacity: 1;
     }
@@ -29,6 +33,7 @@
 .projectName {
   margin-top: 50px;
   font-size: 1.5rem;
+  color: #362222bd;
 }
 
 .starList {
@@ -43,11 +48,11 @@
 }
 
 .removeButton {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   opacity: 0;
   transition: all 400ms ease;
 }
