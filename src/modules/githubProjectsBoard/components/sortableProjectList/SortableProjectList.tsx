@@ -22,7 +22,7 @@ export function SortableProjectList() {
           selected={currentSorting}
         />
       </div>
-      <ProjectList />
+      <ProjectList className={styles.projectList} />
     </>
   );
 }

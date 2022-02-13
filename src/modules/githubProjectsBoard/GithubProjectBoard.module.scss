@@ -7,14 +7,32 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 
   padding: 3%;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'header controls'
+    'body body';
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+
+    grid-template-areas:
+      'header'
+      'controls'
+      'body';
+  }
 }
 
 .heading {
   font-size: 3rem;
-  color: #362222bd;
+  color: #557174;
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (max-width: 1000px) {
     font-size: 2.5rem;
-    text-align: center;
   }
 }

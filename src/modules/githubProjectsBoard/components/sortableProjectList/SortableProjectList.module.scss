@@ -1,10 +1,23 @@
 .controls {
+  grid-area: controls;
   margin: 20px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10%;
+
+  @media (max-width: 1000px) {
+    justify-content: center;
+
+    .select,
+    .addButton {
+      flex-basis: 40%;
+    }
+  }
 }
 .addButton {
   display: flex;
+  justify-content: center;
   font-weight: bold;
   gap: 10px;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
@@ -13,10 +26,16 @@
 .plusSvg {
   width: 20px;
   height: 20px;
+  min-width: 20px;
+  min-height: 20px;
   fill: white;
 }
 
 .select {
-  width: 30%;
+  width: 40%;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.projectList {
+  grid-area: body;
 }

@@ -1,4 +1,5 @@
 $border-radius: 7px;
+$base-color: #8b5e83;
 
 .selectBox {
   position: relative;
@@ -19,12 +20,12 @@ $border-radius: 7px;
   transition: all 100ms ease;
   text-transform: capitalize;
   font-weight: bold;
-  background-color: brown;
+  background-color: $base-color;
   padding: 10px 40px;
   flex: 1;
 
   &:hover {
-    background-color: darken(brown, 10);
+    background-color: darken($base-color, 10);
   }
 
   &_first {
