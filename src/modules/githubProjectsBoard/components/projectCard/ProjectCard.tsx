@@ -31,7 +31,7 @@ export function ProjectCard(props: ProjectCardProps) {
         rel='noopener noreferrer'
         target='_blank'
         className={styles.cardBody}
-        style={{ background: randomColor }}
+        style={{ backgroundColor: randomColor }}
       >
         <h4 className={styles.projectName}>{project.name}</h4>
         <ul className={styles.starList}>

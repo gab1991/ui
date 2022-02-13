@@ -7,6 +7,7 @@ import { Project } from 'types';
 import { createNewProject } from 'modules/githubProjectsBoard/helpers/githubProjectHelpers';
 import { SvgIcons } from 'shared/icons';
 import { Button, EmptyButton, TransparentInput } from 'shared/ui';
+import { generateRandomColor } from 'shared/utils';
 import { validateGithubLink } from 'shared/validation';
 
 import styles from './ProjectTemplate.module.scss';
@@ -22,6 +23,7 @@ interface ProjectTemplateProps extends HTMLAttributes<HTMLDivElement> {
 export function ProjectTemplate(props: ProjectTemplateProps) {
   const { onProjectSave, onTemplateRemove, templateId, ...htmlprops } = props;
   const [selectedStar, setSelectedStar] = useState(0);
+  const [randomColor] = useState(generateRandomColor());
   const [hoveredStarindex, setHoveredStarIndex] = useState<null | number>(null);
 
   const formik = useFormik({
@@ -54,7 +56,7 @@ export function ProjectTemplate(props: ProjectTemplateProps) {
   const onRemoveClick = () => onTemplateRemove(templateId);
 
   return (
-    <div className={styles.projectTemplate} {...htmlprops}>
+    <div className={styles.projectTemplate} style={{ backgroundColor: randomColor }} {...htmlprops}>
       <form className={styles.form} onSubmit={formik.handleSubmit}>
         <TransparentInput
           placeholder='Project name'
