@@ -1,10 +1,11 @@
-import { HTMLAttributes, useState } from 'react';
+import { HTMLAttributes, useRef, useState } from 'react';
 import cn from 'classnames';
 import { useFormik } from 'formik';
 
 import { Project } from 'types';
 
 import { createNewProject } from 'modules/githubProjectsBoard/helpers/githubProjectHelpers';
+import { useGrabFocus } from 'shared/hooks';
 import { SvgIcons } from 'shared/icons';
 import { Button, EmptyButton, TransparentInput } from 'shared/ui';
 import { generateRandomColor } from 'shared/utils';
@@ -25,6 +26,9 @@ export function ProjectTemplate(props: ProjectTemplateProps) {
   const [selectedStar, setSelectedStar] = useState(0);
   const [randomColor] = useState(generateRandomColor());
   const [hoveredStarindex, setHoveredStarIndex] = useState<null | number>(null);
+
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  useGrabFocus(nameInputRef);
 
   const formik = useFormik({
     initialValues: {
@@ -63,6 +67,7 @@ export function ProjectTemplate(props: ProjectTemplateProps) {
           value={formik.values.name}
           onChange={formik.handleChange}
           name='name'
+          refProp={nameInputRef}
         />
         <TransparentInput
           placeholder='Project link'
