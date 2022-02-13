@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event';
 
 import { ProjectTemplate } from './ProjectTemplate';
 
+jest.spyOn(window, 'alert').mockImplementation(() => null);
+
 describe('ProjectTemplate tests', () => {
   it('renders element in the dom', () => {
     const mockFn = jest.fn();
