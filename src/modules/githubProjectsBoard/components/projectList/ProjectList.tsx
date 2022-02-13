@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'react';
 import cn from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { ProjectCard, ProjectTemplate } from '../';
 import { useGithubProjectsContext } from 'modules/githubProjectsBoard/context';
@@ -9,25 +10,27 @@ import styles from './ProjectList.module.scss';
 type ProjectListProps = HTMLAttributes<HTMLUListElement>;
 
 export function ProjectList(props: ProjectListProps) {
-  const { className, ...htmlProps } = props;
+  const { className } = props;
   const { sortedProjects, templates, removeProject, saveProject, removeTemplate } = useGithubProjectsContext();
 
   return (
-    <ul className={cn(styles.projectList, className)} {...htmlProps}>
+    <motion.ul layout className={cn(styles.projectList, className)}>
       {templates.map((template) => (
-        <li key={template.templateId}>
+        <motion.li layout key={template.templateId}>
           <ProjectTemplate
             onProjectSave={saveProject}
             templateId={template.templateId}
             onTemplateRemove={removeTemplate}
           />
-        </li>
+        </motion.li>
       ))}
       {sortedProjects.map((project) => (
-        <li key={project.id}>
-          <ProjectCard project={project} onRemoveCardClick={removeProject} />
-        </li>
+        <AnimatePresence key={project.id}>
+          <motion.li layout animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
+            <ProjectCard project={project} onRemoveCardClick={removeProject} />
+          </motion.li>
+        </AnimatePresence>
       ))}
-    </ul>
+    </motion.ul>
   );
 }
