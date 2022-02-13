@@ -1,5 +1,5 @@
 export class LocalStorageHandler {
-  static getItem(key: string): string {
+  static getItem(key: string): string | undefined {
     return localStorage[key];
   }
 

@@ -6,6 +6,13 @@
   overflow: hidden;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   padding: 30px;
+  position: relative;
+
+  &:hover {
+    .removeButton {
+      opacity: 1;
+    }
+  }
 }
 
 .form {
@@ -41,4 +48,18 @@
 }
 .saveBtn {
   font-weight: bold;
+}
+
+.removeButton {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  opacity: 0;
+  transition: all 400ms ease;
+}
+
+.crosSvg {
+  fill: brown;
 }

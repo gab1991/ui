@@ -10,13 +10,17 @@ type ProjectListProps = HTMLAttributes<HTMLUListElement>;
 
 export function ProjectList(props: ProjectListProps) {
   const { className, ...htmlProps } = props;
-  const { projects, templates, removeProject } = useGithubProjectsContext();
+  const { projects, templates, removeProject, saveProject, removeTemplate } = useGithubProjectsContext();
 
   return (
     <ul className={cn(styles.projectList, className)} {...htmlProps}>
       {templates.map((template) => (
         <li key={template.templateId}>
-          <ProjectTemplate />
+          <ProjectTemplate
+            onProjectSave={saveProject}
+            templateId={template.templateId}
+            onTemplateRemove={removeTemplate}
+          />
         </li>
       ))}
       {projects.map((project) => (

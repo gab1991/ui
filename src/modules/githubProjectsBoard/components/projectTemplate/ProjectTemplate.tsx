@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { HTMLAttributes, useState } from 'react';
 import cn from 'classnames';
 import { useFormik } from 'formik';
 
+import { Project } from 'types';
+
+import { createNewProject } from 'modules/githubProjectsBoard/helpers/githubProjectHelpers';
 import { SvgIcons } from 'shared/icons';
 import { Button, EmptyButton, TransparentInput } from 'shared/ui';
 import { validateGithubLink } from 'shared/validation';
@@ -10,7 +13,14 @@ import styles from './ProjectTemplate.module.scss';
 
 const MAX_STARS = 5;
 
-export function ProjectTemplate() {
+interface ProjectTemplateProps extends HTMLAttributes<HTMLDivElement> {
+  onProjectSave: (project: Project) => void;
+  onTemplateRemove: (id: number) => void;
+  templateId: number;
+}
+
+export function ProjectTemplate(props: ProjectTemplateProps) {
+  const { onProjectSave, onTemplateRemove, templateId, ...htmlprops } = props;
   const [selectedStar, setSelectedStar] = useState(0);
   const [hoveredStarindex, setHoveredStarIndex] = useState<null | number>(null);
 
@@ -19,7 +29,11 @@ export function ProjectTemplate() {
       link: '',
       name: '',
     },
-    onSubmit: async ({ link, name }) => {},
+    onSubmit: async ({ link, name }) => {
+      const newProject = createNewProject(link, name, selectedStar);
+      onProjectSave(newProject);
+      onTemplateRemove(templateId);
+    },
     validate: ({ link }) => {
       const isValid = validateGithubLink(link);
 
@@ -37,8 +51,10 @@ export function ProjectTemplate() {
 
   const starsBtnArray = Array.from({ length: MAX_STARS });
 
+  const onRemoveClick = () => onTemplateRemove(templateId);
+
   return (
-    <div className={styles.projectTemplate}>
+    <div className={styles.projectTemplate} {...htmlprops}>
       <form className={styles.form} onSubmit={formik.handleSubmit}>
         <TransparentInput
           placeholder='Project name'
@@ -83,6 +99,9 @@ export function ProjectTemplate() {
           SAVE
         </Button>
       </form>
+      <EmptyButton className={styles.removeButton} onClick={onRemoveClick}>
+        <SvgIcons.Cross className={styles.crosSvg} />
+      </EmptyButton>
     </div>
   );
 }
