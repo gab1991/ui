@@ -1,4 +1,4 @@
-const palette = ['#DE8971', '#B2B8A3', '#EEBB4D', '#557174', '#999B84', '#E6A157', '#94D0CC'];
+const palette = ['#C8745C', '#798951', '#BB8614', '#557174', '#7F8170', '#B86105', '#3D9791'];
 
 export function generateRandomColor() {
   const randomIndex = Math.floor(Math.random() * palette.length);

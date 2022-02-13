@@ -33,7 +33,7 @@ export function ProjectCard(props: ProjectCardProps) {
         className={styles.cardBody}
         style={{ backgroundColor: randomColor }}
       >
-        <h4 className={styles.projectName}>{project.name}</h4>
+        <p className={styles.projectName}>{project.name}</p>
         <ul className={styles.starList}>
           {starsArray.map((_, index) => (
             <li key={index}>
@@ -42,7 +42,7 @@ export function ProjectCard(props: ProjectCardProps) {
           ))}
         </ul>
       </a>
-      <EmptyButton className={styles.removeButton} onClick={onRemoveButtonClick}>
+      <EmptyButton className={styles.removeButton} onClick={onRemoveButtonClick} aria-label='remove card'>
         <SvgIcons.Cross className={styles.crosSvg} />
       </EmptyButton>
     </div>

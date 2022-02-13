@@ -106,7 +106,7 @@ export function ProjectTemplate(props: ProjectTemplateProps) {
           SAVE
         </Button>
       </form>
-      <EmptyButton className={styles.removeButton} onClick={onRemoveClick}>
+      <EmptyButton className={styles.removeButton} onClick={onRemoveClick} aria-label='remove card'>
         <SvgIcons.Cross className={styles.crosSvg} />
       </EmptyButton>
     </div>
