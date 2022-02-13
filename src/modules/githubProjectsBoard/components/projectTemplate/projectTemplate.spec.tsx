@@ -1,11 +1,7 @@
-import { act } from 'react-dom/test-utils';
-
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { ProjectTemplate } from './ProjectTemplate';
-
-jest.spyOn(window, 'alert').mockImplementation(() => {});
 
 describe('ProjectTemplate tests', () => {
   it('renders element in the dom', () => {
