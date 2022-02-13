@@ -14,3 +14,24 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.starList {
+  display: flex;
+  gap: 10px;
+}
+
+.starSvg {
+  width: 30px;
+  height: 30px;
+  fill: brown;
+  opacity: 0.4;
+  transition: all 200ms ease;
+
+  &_covered {
+    opacity: 0.8;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
