@@ -1,0 +1,53 @@
+$border-radius: 7px;
+
+.selectBox {
+  position: relative;
+}
+
+.textSection {
+  border: 1px solid rgba(82, 82, 82, 0.9);
+  border-radius: 0;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  min-width: 100px;
+
+  transition: all 100ms ease;
+  text-transform: capitalize;
+  font-weight: bold;
+  background-color: brown;
+  padding: 10px 40px;
+  flex: 1;
+
+  &:hover {
+    background-color: darken(brown, 10);
+  }
+
+  &_first {
+    border-radius: $border-radius;
+  }
+
+  &_first_open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &_last {
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+
+  span {
+    flex: 1;
+  }
+}
+
+.options {
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+}

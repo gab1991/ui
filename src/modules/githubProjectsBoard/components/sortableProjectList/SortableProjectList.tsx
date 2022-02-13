@@ -1,14 +1,13 @@
 import { useGithubProjectsContext } from 'modules/githubProjectsBoard/context';
 import { SvgIcons } from 'shared/icons';
-import { Button } from 'shared/ui';
+import { Button, Select } from 'shared/ui';
 
 import styles from './SortableProjectList.module.scss';
 
 import { ProjectList } from '..';
 
 export function SortableProjectList() {
-  const { addProject } = useGithubProjectsContext();
-
+  const { addProject, availableSoringOptions, currentSorting, changeSorting } = useGithubProjectsContext();
   return (
     <>
       <div className={styles.controls}>
@@ -16,6 +15,12 @@ export function SortableProjectList() {
           <SvgIcons.Plus className={styles.plusSvg} />
           ADD
         </Button>
+        <Select
+          className={styles.select}
+          changedSelected={changeSorting}
+          options={availableSoringOptions}
+          selected={currentSorting}
+        />
       </div>
       <ProjectList />
     </>

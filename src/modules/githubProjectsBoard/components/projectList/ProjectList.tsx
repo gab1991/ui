@@ -10,7 +10,7 @@ type ProjectListProps = HTMLAttributes<HTMLUListElement>;
 
 export function ProjectList(props: ProjectListProps) {
   const { className, ...htmlProps } = props;
-  const { projects, templates, removeProject, saveProject, removeTemplate } = useGithubProjectsContext();
+  const { sortedProjects, templates, removeProject, saveProject, removeTemplate } = useGithubProjectsContext();
 
   return (
     <ul className={cn(styles.projectList, className)} {...htmlProps}>
@@ -23,7 +23,7 @@ export function ProjectList(props: ProjectListProps) {
           />
         </li>
       ))}
-      {projects.map((project) => (
+      {sortedProjects.map((project) => (
         <li key={project.id}>
           <ProjectCard project={project} onRemoveCardClick={removeProject} />
         </li>
