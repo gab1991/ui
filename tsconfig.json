@@ -3,7 +3,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": false,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -18,7 +18,8 @@
     "paths": {},
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
-    "tsBuildInfoFile": "./node_modules/@tsCache/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "./node_modules/@tsCache/tsconfig.tsbuildinfo",
+    "types": ["vite/client", "jest", "testing-library__jest-dom"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
