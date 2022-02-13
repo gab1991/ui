@@ -2,7 +2,7 @@ import { useState } from 'react';
 import cn from 'classnames';
 
 import { SvgIcons } from 'shared/icons';
-import { EmptyButton, TransparentInput } from 'shared/ui';
+import { Button, EmptyButton, TransparentInput } from 'shared/ui';
 
 import styles from './ProjectTemplate.module.scss';
 
@@ -40,6 +40,7 @@ export function ProjectTemplate() {
             );
           })}
         </ul>
+        <Button className={styles.saveBtn}>SAVE</Button>
       </form>
     </div>
   );
