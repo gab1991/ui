@@ -13,3 +13,8 @@ const compareFnMap: Record<ProjectSortingOptions, CompareFn> = {
 export function getProjectSoringCompareFn(sortOrder: ProjectSortingOptions): CompareFn {
   return compareFnMap[sortOrder];
 }
+
+export function sortProjects(projects: Project[], sortOption: ProjectSortingOptions): Project[] {
+  const compareFn = getProjectSoringCompareFn(sortOption);
+  return [...projects].sort(compareFn);
+}

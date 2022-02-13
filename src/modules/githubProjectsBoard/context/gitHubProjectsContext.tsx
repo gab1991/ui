@@ -1,9 +1,9 @@
-import React, { ReactNode, useContext, useLayoutEffect, useState } from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 
 import { isAvailbaleSorgingOptions, ProjectSortingOptions } from '../types';
 import { Project, ProjectTemplate } from 'types';
 
-import { getProjectSoringCompareFn } from '../helpers';
+import { sortProjects } from '../helpers';
 import { createProjectTemplate, githubLocalStoreProjectsManager } from '../helpers/githubProjectHelpers';
 import { projects as defaultProjects } from 'data/defaultProjects';
 
@@ -33,14 +33,14 @@ export const availableSoringOptions: ProjectSortingOptions[] = [
 
 export function GitHubProjectContextProvider(props: GitHubProjectContextProviderProps) {
   const [projects, setProjects] = useState<Project[]>(githubLocalStoreProjectsManager.getProjects() || defaultProjects);
-  const [sortedProjects, setSortedProjects] = useState<Project[]>([]);
-  const [templates, setTemplates] = useState<ProjectTemplate[]>([]);
   const [currentSorting, setCurrentSoring] = useState(ProjectSortingOptions.name_asc);
+  const [templates, setTemplates] = useState<ProjectTemplate[]>([]);
 
-  useLayoutEffect(() => {
-    const compareFn = getProjectSoringCompareFn(currentSorting);
-    const sorted = [...projects].sort(compareFn);
-    setSortedProjects(sorted);
+  const [sortedProjects, setSortedProjects] = useState<Project[]>(sortProjects(projects, currentSorting));
+
+  useEffect(() => {
+    const newSorting = sortProjects(projects, currentSorting);
+    setSortedProjects(newSorting);
   }, [currentSorting, projects]);
 
   const removeProject = (id: string) => {

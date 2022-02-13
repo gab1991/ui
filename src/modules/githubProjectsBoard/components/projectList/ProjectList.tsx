@@ -16,16 +16,18 @@ export function ProjectList(props: ProjectListProps) {
   return (
     <motion.ul layout className={cn(styles.projectList, className)}>
       {templates.map((template) => (
-        <motion.li layout key={template.templateId}>
-          <ProjectTemplate
-            onProjectSave={saveProject}
-            templateId={template.templateId}
-            onTemplateRemove={removeTemplate}
-          />
-        </motion.li>
+        <AnimatePresence key={template.templateId} initial={false}>
+          <motion.li layout animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
+            <ProjectTemplate
+              onProjectSave={saveProject}
+              templateId={template.templateId}
+              onTemplateRemove={removeTemplate}
+            />
+          </motion.li>
+        </AnimatePresence>
       ))}
       {sortedProjects.map((project) => (
-        <AnimatePresence key={project.id}>
+        <AnimatePresence key={project.id} initial={false}>
           <motion.li layout animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
             <ProjectCard project={project} onRemoveCardClick={removeProject} />
           </motion.li>
