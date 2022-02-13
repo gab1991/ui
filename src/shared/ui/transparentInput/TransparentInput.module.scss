@@ -1,0 +1,16 @@
+.transparentInput {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.2rem;
+  position: relative;
+  border-bottom: 2px solid brown;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: inherit;
+  }
+}
