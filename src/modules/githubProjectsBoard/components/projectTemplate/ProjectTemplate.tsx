@@ -23,7 +23,7 @@ interface ProjectTemplateProps extends HTMLAttributes<HTMLDivElement> {
 
 export function ProjectTemplate(props: ProjectTemplateProps) {
   const { onProjectSave, onTemplateRemove, templateId, ...htmlprops } = props;
-  const [selectedStar, setSelectedStar] = useState(0);
+  const [selectedStar, setSelectedStar] = useState(1);
   const [randomColor] = useState(generateRandomColor());
   const [hoveredStarindex, setHoveredStarIndex] = useState<null | number>(null);
 
