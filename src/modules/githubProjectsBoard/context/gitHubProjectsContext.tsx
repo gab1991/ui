@@ -27,13 +27,13 @@ interface GitHubProjectContextProviderProps {
 export const availableSoringOptions: ProjectSortingOptions[] = [
   ProjectSortingOptions.creation_at_asc,
   ProjectSortingOptions.creation_at_desc,
-  ProjectSortingOptions.name_asc,
-  ProjectSortingOptions.name_desc,
+  ProjectSortingOptions.rating_asc,
+  ProjectSortingOptions.rating_desc,
 ];
 
 export function GitHubProjectContextProvider(props: GitHubProjectContextProviderProps) {
   const [projects, setProjects] = useState<Project[]>(githubLocalStoreProjectsManager.getProjects() || defaultProjects);
-  const [currentSorting, setCurrentSoring] = useState(ProjectSortingOptions.name_asc);
+  const [currentSorting, setCurrentSoring] = useState(ProjectSortingOptions.rating_asc);
   const [templates, setTemplates] = useState<ProjectTemplate[]>([]);
 
   const [sortedProjects, setSortedProjects] = useState<Project[]>(sortProjects(projects, currentSorting));
